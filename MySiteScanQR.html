@@ -1,0 +1,98 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Video</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    html, body {
+      min-height: 100%;
+      background: #000;
+      color: #fff;
+      font-family: Arial, sans-serif;
+    }
+    body {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0;
+      height: 100vh;
+    }
+    .page {
+      width: 100%;
+      max-width: 900px;
+      padding: 12px;
+    }
+    .video-wrapper {
+      position: relative;
+      width: 100%;
+      overflow: hidden;
+      border-radius: 18px;
+      background: #000;
+    }
+    video {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+    .controls {
+      margin-top: 12px;
+      display: flex;
+      justify-content: center;
+      gap: 12px;
+    }
+    .button {
+      width: 120px;
+      padding: 14px 16px;
+      border-radius: 999px;
+      border: none;
+      background: #ffffff22;
+      color: #fff;
+      font-size: 1rem;
+      cursor: pointer;
+    }
+    .button:hover {
+      background: #ffffff33;
+    }
+    @media (max-width: 520px) {
+      body {
+        padding: 8px;
+      }
+      .button {
+        width: 100%;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <div class="video-wrapper">
+      <video id="bgVideo" controls autoplay muted playsinline loop>
+        <source src="IMG_2932 (3).mp4" type="video/mp4">
+        Your browser does not support this video format.
+      </video>
+    </div>
+    <div class="controls">
+      <button id="playButton" class="button" type="button">Play</button>
+    </div>
+  </div>
+  <script>
+    if (sessionStorage.getItem('videoAccess') !== 'true') {
+      window.location.href = 'index.html';
+    }
+
+    const video = document.getElementById('bgVideo');
+    const playButton = document.getElementById('playButton');
+
+    playButton.addEventListener('click', () => {
+      video.muted = false;
+      video.play();
+    });
+  </script>
+</body>
+</html>
